@@ -66,4 +66,4 @@ PLEX 对中文标题的媒体，默认按照笔画数排列，对检索中文电
 
 - 该脚本参考了 [timmy0209](https://github.com/timmy0209) 的脚本 [plex-chinese-genre](https://github.com/timmy0209/plex-chinese-genre) 及 [plex-pinyin-sort](https://github.com/timmy0209/plex-pinyin-sort) 的思路，于此基础上整理重构而来。
 - 2023.10.05 参考了[x1ao4](https://github.com/x1ao4) 提供的合集相关代码。
-- 2024.08.03 完全重构，抛弃所有旧代码。
+- 2024.08.03 完全重构，抛弃所有旧代码。感谢 x1ao4 贡献了国家的翻译字典。
