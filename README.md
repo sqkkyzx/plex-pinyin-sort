@@ -45,11 +45,12 @@ PLEX 对中文标题的媒体，默认按照笔画数排列，对检索中文电
 | daysago    |    | 0           | 指定一个天数，比如 5 ，则脚本只会筛选 5 天内新添加的媒体。0 表示不筛选。 |
 | sorttitle  |    | True        | 开启排序标题转拼音首字母功能                           |
 | transtags  |    | True        | 开启标签翻译功能                                 |
-| tagsfile   |    | https://mirror.ghproxy.com/raw.githubusercontent.com/sqkkyzx/plex_localization_zhcn/main/tags.yaml   | 标签翻译字典，可以是本地文件路径比如`tags.yaml`，也可以是 url   |
+| tagsfile   |    | *           | 标签翻译字典，可以是本地文件路径比如`tags.yaml`，也可以是 url   |
 
 
 1. 必填指的是，没有配置文件时必填。如果配置文件存在，且格式正确，则会优先从配置文件读取配置，忽略参数配置。
 2. 指定库类型和指定标签类型，只有使用配置文件时才支持更改。默认对电影、电视剧、艺术家、专辑、曲目、合集进行操作，翻译的标签默认开启流派、风格、情绪、国家。
+2. 标签翻译词典默认从 https://mirror.ghproxy.com/raw.githubusercontent.com/sqkkyzx/plex_localization_zhcn/main/tags.yaml 进行读取。
   
 
 # 其他说明
