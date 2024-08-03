@@ -176,12 +176,16 @@ def op_sort(media):
         logging.info(f"Set <{media.title}> SortTitle to [{new_sort_title}]")
 
 
-def op_tag(media: plexapi.media, transdict: dict, trans_tagset: set, allow_libs, allow_tags):
+def op_tag(media: plexapi.media, transdict: dict, trans_tagset: set, allow_libs, allow_tags, baseurl, token):
     _allow_types = [item for item in chain.from_iterable(allow_libs.values()) if item != 'collection']
     if media.type in _allow_types:
+
+        metadata = requests.get(
+            url=f'{baseurl}{media.key}', headers={'X-Plex-Token': token, 'Accept': 'application/json'}
+        ).json().get("MediaContainer", {}).get("Metadata", [{}])[0]
+
         for tag_name, tag_name_s in allow_tags.items():
-            metadata = media.reload(**plexapi_reload_options).__dict__
-            tags = [tag.tag for tag in metadata.get(tag_name_s, [])]
+            tags = [tag.get('tag') for tag in metadata.get(tag_name, [])]
             if tags and any(tag in trans_tagset for tag in tags):
                 new_tags = convert_tags_to_zhcn(tags, transdict)
                 media.editTags(tag_name_s, tags, False, True).reload(**plexapi_reload_options)
@@ -214,7 +218,7 @@ def main(
         transdict = loadtags(tag_source)
         transtagset = set(transdict.keys())
         for op_media in op_medias:
-            op_tag(op_media, transdict, transtagset, allow_libs, allow_tags)
+            op_tag(op_media, transdict, transtagset, allow_libs, allow_tags, baseurl, token)
         t4 = int(time.time() * 1000)
         logging.info(f'msg="已设置中文标签。" duration={(t4 - t3)}ms')
     else:

@@ -1,7 +1,7 @@
 # 配置 plex 连接
 auth:
   baseurl: "http://127.0.0.1:32400"
-  token: "mytoken"
+  token: "euN8BgiaA6iDMGsSSabg"
 
 # 指定一个天数，比如 5 ，则脚本只会筛选 5 天内新添加的媒体。0 表示不筛选。
 daysAgo: 0
@@ -30,5 +30,5 @@ allowTags:
   Genre: true
   Mood: true
   Style: true
-  Country: false
+  Country: true
   Director: false
