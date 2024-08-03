@@ -40,7 +40,9 @@ def loadtags(source):
         # 如果是 URL，使用 requests 获取内容
         response = requests.get(source)
         response.raise_for_status()  # 确保请求成功
-        return yaml.safe_load(response.text)
+        data = yaml.safe_load(response.text)
+        logging.info(f"从 {source} 读取了最新的标签翻译字典，共计 {len(data.keys())} 个标签")
+        return data
     else:
         # 如果是本地文件路径，读取文件
         if not os.path.isfile(source):
