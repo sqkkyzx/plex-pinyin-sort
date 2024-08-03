@@ -109,7 +109,7 @@ def loadconfig():
         parser.add_argument('--daysago', default=0, type=int, required=False, help="仅搜索多少天前的媒体，0为不限制")
         parser.add_argument('--sorttitle', default=True, type=bool, required=False, help="开启标题排序")
         parser.add_argument('--transtags', default=True, type=bool, required=False, help="开启标签翻译")
-        parser.add_argument('--tagsfile', default="tags.yaml", type=str, required=False, help="配置文件路径")
+        parser.add_argument('--tagsfile', default="https://mirror.ghproxy.com/raw.githubusercontent.com/sqkkyzx/plex_localization_zhcn/main/tags.yaml", type=str, required=False, help="配置文件路径")
         args = parser.parse_args()
 
         class _cfg:
@@ -202,7 +202,11 @@ def main(
         tag_source: str,
         allow_libs: dict, allow_tags: dict,
 ):
-    client = PlexServer(baseurl, token)
+    try:
+        client = PlexServer(baseurl, token)
+    except Exception as e:
+        logging.debug(e)
+        raise "连接服务器失败，检查 token 和 baseurl，或者确认 plex 是否运行。"
     t1 = int(time.time() * 1000)
 
     op_medias = list_media(client, allow_libs, days)

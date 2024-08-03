@@ -1,7 +1,7 @@
 # 配置 plex 连接
 auth:
   baseurl: "http://127.0.0.1:32400"
-  token: "myplextoken"
+  token: "myPlexToken"
 
 # 指定一个天数，比如 5 ，则脚本只会筛选 5 天内新添加的媒体。0 表示不筛选。
 daysAgo: 0
@@ -10,8 +10,8 @@ daysAgo: 0
 sortTitle: true
 # 是否开启开启标签翻译功能， true 开启，false 关闭
 transTags: true
-# 读取标签翻译字典的文件路径，也可以是一个网址url
-tagsFile: "tags.yaml"
+# 读取标签翻译字典的文件路径，可以是一个网址url，也可以是一个本地文件路径
+tagsFile: "https://mirror.ghproxy.com/raw.githubusercontent.com/sqkkyzx/plex_localization_zhcn/main/tags.yaml"
 
 # 允许操作的库类型，设置 true 允许，false 禁用
 allowLibs:
@@ -25,6 +25,7 @@ allowLibs:
     artist: true
     album: true
     track: true
+    collection: true
 
 
 # 允许操作的标签类型，设置 true 允许，false 禁用
