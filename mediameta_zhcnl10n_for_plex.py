@@ -172,7 +172,8 @@ def search_media(pms_client, title):
 def op_sort(media):
     if has_chinese(media.titleSort):
         new_sort_title = convert_sort_to_pinyin(media.title)
-        media.editSortTitle(convert_sort_to_pinyin(media.title))
+        # media.editSortTitle(convert_sort_to_pinyin(media.title))
+        media.editField('titleSort', convert_sort_to_pinyin(media.title), locked=True)
         logging.info(f"Set <{media.title}> SortTitle to [{new_sort_title}]")
 
 

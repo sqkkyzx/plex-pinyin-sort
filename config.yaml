@@ -23,6 +23,7 @@ allowLibs:
   artist:
     artist: true
     album: true
+    track: true
 
 
 # 允许操作的标签类型，设置 true 允许，false 禁用
